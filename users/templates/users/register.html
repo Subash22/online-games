@@ -7,7 +7,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% if title %}
-    <title>Online Games | login </title>
+    <title>Online Games | Register </title>
     {% else %}
     <title>Online Games</title>
     {% endif %}
@@ -50,7 +50,7 @@
               <h1
                 class="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200"
               >
-                Login
+                Sign up
               </h1>
 
               {% if messages %}                            
@@ -67,17 +67,25 @@
 
                 <label class="block mt-4  text-sm">
                   <span class="text-gray-700 dark:text-gray-400">Username</span>
-                  {{form.username|add_class:'block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input'}}
-                  {% if form.username.errors%}
-                  <div class="text-danger">{{form.username.errors}}</div>
+                  {{r_form.username|add_class:'block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input'}}
+                  {% if r_form.username.errors%}
+                  <div class="text-danger">{{r_form.username.errors}}</div>
                   {%endif%}
                 </label>
                 
                 <label class="block mt-4 text-sm">
                   <span class="text-gray-700 dark:text-gray-400">Password</span>
-                  {{form.password|add_class:'block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input'}}
-                  {% if form.password.errors%}
-                  <div class="text-danger">{{form.password.errors}}</div>
+                  {{r_form.password1|add_class:'block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input'}}
+                  {% if r_form.password1.errors%}
+                  <div class="text-danger">{{r_form.password1.errors}}</div>
+                  {%endif%}              
+                </label>
+
+                <label class="block mt-4 text-sm">
+                  <span class="text-gray-700 dark:text-gray-400">Confirm Password</span>
+                  {{r_form.password2|add_class:'block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input'}}
+                  {% if r_form.password2.errors%}
+                  <div class="text-danger">{{r_form.password2.errors}}</div>
                   {%endif%}              
                 </label>
 
@@ -85,10 +93,10 @@
                 <button type="submit"
                   class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
                 >
-                  Login
+                  Register
                 </button>
                 
-                <p class="text-gray-700 dark:text-gray-400 mt-2 text-sm">Dont have account?? <a href="/register" style="color: blue;">Register</a></p>
+                <p class="text-gray-700 dark:text-gray-400 mt-2 text-sm">Already have account?? <a href="/login" style="color: blue;">Login</a></p>
               </form>
 
         
