@@ -1,0 +1,89 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    {% if title %}
+    <title>Online Games | {{ title }}</title>
+    {% else %}
+    <title>Online Games</title>
+    {% endif %}
+
+    <link rel="icon" href="{% static 'main/img/loan-management-system.png' %}" type="image/*" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'main/css/tailwind.css' %}" />
+    <link rel="stylesheet" href="{% static 'main/css/tailwind.output.css' %}" />
+    <link rel="stylesheet" href="{% static 'main/css/custom.css' %}" />
+    <link rel="stylesheet" href="{% static 'main/css/Chart.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'main/css/jquery.dataTables.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'main/css/buttons.dataTables.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'main/css/jquery.modal.min.css' %}" />
+
+    <style>
+
+      .blocker{
+        z-index: 99 !important;
+      }
+
+      .dotted-line{
+        border-top: 1px dashed black; width: 100%;
+      }
+      .star-line{
+        border-top: 1px double black; width: 100%; margin-top: 5px; padding-top: 5px;
+      }
+
+    </style>
+
+  </head>
+  <body>
+    <div
+      class="flex h-screen bg-gray-50 dark:bg-gray-900"
+      :class="{ 'overflow-hidden': isSideMenuOpen }"
+    >
+    
+    
+      {% include "main/sidebar.html" %}
+
+
+      <div class="flex flex-col flex-1 w-full">
+
+
+        {% include "main/navbar.html"%}
+
+        
+        {% block content %}
+
+        {% endblock content %} 
+        
+        
+
+      </div>
+    </div>
+
+    <div id="viewModal" class="modal">
+      <div class="w-full">
+        <h2 class='mt-6 mb-2 text-xl text-center font-semibold text-gray-700 float-center'>View Details</h2>
+        <div id="viewBookingBase"></div>
+      </div>
+    </div>
+    
+    <script src="{% static 'main/js/alpine.min.js' %}" defer></script>
+    <script src="{% static 'main/js/init-alpine.js' %}"></script>
+    <script src="{% static 'main/js/popper.js' %}" defer></script>
+    <script src="{% static 'main/js/jquery-3.5.1.js' %}"></script>
+    <script src="{% static 'main/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'main/js/jquery.modal.min.js' %}"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+
+    
+    {% block extra_scripts %}
+    {% endblock extra_scripts %}
+</body>
+</html>

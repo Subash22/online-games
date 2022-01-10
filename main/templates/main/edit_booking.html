@@ -1,0 +1,47 @@
+{% extends "main/base.html" %} {% load static %} {% block content %}
+
+
+<main class="h-full pb-16 overflow-y-auto">
+  <div class="container grid px-6 mx-auto">
+    <h2
+      class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200 float-left"
+    >
+      Edit Booking
+    </h2>
+
+    <div>
+        <form method="post">
+          {% csrf_token %}
+
+          <label class="block text-sm mb-2 mt-2">
+            <span class="text-gray-700 dark:text-gray-400">Select Broadcast</span>
+            <select name="broadcast_id" required
+              class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+            >
+              {% for broadcast in broadcasts %}
+                <option value="{{broadcast.id}}" {% if broadcast.id == booking.broadcast.id %}selected{% endif %}>{{broadcast.name}} - {{broadcast.date_publish}}</option>
+              {% endfor %}
+            </select>
+          </label>
+
+          <label class="block text-sm mb-2">
+            <span class="text-gray-700 dark:text-gray-400">Remarks</span>
+            <input
+              class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+              placeholder="Remarks" name="remarks" required value="{{ booking.remarks }}"
+            />
+          </label>
+
+          <div>
+            <button type="submit" class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+              Edit Booking
+            </button>
+          </div>
+        </form>
+    </div>
+
+  </div>
+</main>
+
+
+{% endblock content %}
